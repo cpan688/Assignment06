@@ -51,17 +51,14 @@ form.addEventListener("submit", (e) => {
 });
 
     // Handle the DELETE button click event
-    document.getElementById('employees').addEventListener('click', (e) => {
-        if (confirm('Are you sure you want to delete this employee?')) {
-            // let selectedRow = e.path[1];                        // Get the selected row to delete
-            // table.deleteRow(selectedRow);                       // Delete the selected row
-            if (e.target.classList.contains("delete")) {
+    table.addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete')) {
+            if (confirm('Are you sure you want to delete this employee?')) {
                 e.target.closest("tr").remove();
                 empCnt -= 1;                                        // Decrement the employee count
                 showEmpCount();                                     // Refresh Employee Count Display
             }
-        }
-    });
+        } });
 
     // Refresh Employee Count Display
     function showEmpCount() {
